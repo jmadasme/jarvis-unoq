@@ -1,0 +1,1 @@
+arduino ALL=(root) NOPASSWD: [REDACTED] start ollama, /usr/bin/systemctl stop ollama, /usr/bin/systemctl restart ollama
