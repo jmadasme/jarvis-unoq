@@ -134,6 +134,28 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
   .stat{border-right:0;border-bottom:1px solid var(--line)}
   h1{font-size:42px}
 }
+
+/* ── Contenido heredado del proyecto original, en clave sobria ── */
+.rich{max-width:78ch}
+.rich p{margin:0 0 14px;color:#c3d4da}
+.rich h3{margin:26px 0 10px;font-size:19px;letter-spacing:-.02em}
+.rich h4{margin:22px 0 8px;font-size:15px;letter-spacing:-.01em}
+.rich ul,.rich ol{margin:0 0 16px;padding-left:22px;color:#c3d4da}
+.rich li{margin:0 0 6px}
+.rich figure{margin:22px 0;border:1px solid var(--line);border-radius:16px;padding:10px;background:rgba(11,34,43,.5)}
+.rich figure img{width:100%;display:block;border-radius:10px}
+.rich figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:9px;line-height:1.5}
+.rich .table-wrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:12px}
+.rich table{border-collapse:collapse;width:100%;font-size:13.5px}
+.rich th,.rich td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.rich th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:rgba(11,34,43,.6)}
+.rich tr:last-child td{border-bottom:0}
+.rich pre{margin:18px 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#04141a;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.6;color:#cfe3e8}
+.rich code{font-family:var(--mono);font-size:.92em}
+.rich .note{margin:18px 0;padding:13px 16px;border-left:2px solid var(--accent);background:rgba(42,157,143,.07);color:#c3d4da;font-size:14px}
+.rich .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+.rich .card-grid .card{margin:0}
+
 </style>
 <link rel="stylesheet" href="assets/community.css?v=1">
 </head>
@@ -182,35 +204,44 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
   <a href="https://github.com/jmadasme/jarvis-unoq/tree/main/versions/JarvisUNOQ" target="_blank" rel="noopener">Ver carpeta <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </article></div>
 </div></section>
-
-<section class="section tight"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">03 — Cómo se usa</div><h2>De la carpeta a la práctica.</h2></div>
-  <div class="timeline"><div class="step reveal"><div class="step-n">01</div><h4>Instalá dependencias</h4><p>Seguí INSTALL.md y verificá espacio.</p></div><div class="step reveal"><div class="step-n">02</div><h4>Probá el micrófono</h4><p>Sin entrada de audio no hay pipeline.</p></div><div class="step reveal"><div class="step-n">03</div><h4>Cargá el modelo</h4><p>El tamaño debe caber en la placa.</p></div><div class="step reveal"><div class="step-n">04</div><h4>Medí latencia</h4><p>PERFORMANCE.md documenta el rendimiento real.</p></div></div>
-</div></section>
-
-<section class="section tight"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">04 — Decisiones</div><h2>Lo que lo hace distinto</h2></div>
-  <div class="features"><div class="feature reveal"><h4>Local</h4><p>El audio no sale del equipo.</p></div><div class="feature reveal"><h4>Sin GPU</h4><p>Modelos livianos y CPU.</p></div><div class="feature reveal"><h4>Tres etapas</h4><p>STT, LLM y TTS separados.</p></div><div class="feature reveal"><h4>Arquitectura documentada</h4><p>Se entiende dónde ajustar.</p></div><div class="feature reveal"><h4>Rendimiento medido</h4><p>No se promete tiempo real.</p></div><div class="feature reveal"><h4>Base extensible</h4><p>Se puede cambiar el modelo.</p></div></div>
-</div></section>
-
-<section class="section tight" id="stack"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">05 — Stack y arranque</div><h2>Con qué está construido</h2></div>
-  <div class="stack-grid">
-    <div class="reveal"><div class="chips"><span class="chip">Arduino UNO Q</span><span class="chip">Python</span><span class="chip">STT</span><span class="chip">LLM</span><span class="chip">TTS</span><span class="chip">Linux</span></div><div class="note"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span>Los modelos no se incluyen por tamaño. La latencia depende del modelo elegido y del almacenamiento de la placa. Se removieron secretos en 1 archivo(s) de esta familia.</span></div></div>
-    <div class="terminal reveal"><div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><pre>git clone https://github.com/jmadasme/jarvis-unoq.git
-cd jarvis-unoq/versions/JarvisUNOQ
-# leé INSTALL.md y ARCHITECTURE.md
-python3 main.py</pre></div>
-  </div>
-</div></section>
-
-<section class="section tight" id="docs"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">06 — Documentación</div><h2>Para usar y para entender.</h2><p class="section-sub">Cada documento está en el repositorio, versionado junto al código.</p></div>
-  <div class="docs"><a class="doc reveal" href="https://github.com/jmadasme/jarvis-unoq/blob/main/docs/datasheet.md" target="_blank" rel="noopener"><span class="tag">DATASHEET</span><h4>Manual de operación</h4><p>Instalación, configuración, uso y diagnóstico.</p></a><a class="doc reveal" href="https://github.com/jmadasme/jarvis-unoq/blob/main/docs/developer.md" target="_blank" rel="noopener"><span class="tag">DEVELOPER</span><h4>Guía de código</h4><p>Arquitectura, módulos, contratos y extensión.</p></a><a class="doc reveal" href="https://github.com/jmadasme/jarvis-unoq/blob/main/docs/REFERENCES.md" target="_blank" rel="noopener"><span class="tag">REFERENCES</span><h4>Referencias</h4><p>Estándares, librerías y fuentes oficiales.</p></a><a class="doc reveal" href="https://github.com/jmadasme/jarvis-unoq/blob/main/docs/BITACORA.md" target="_blank" rel="noopener"><span class="tag">BITÁCORA</span><h4>Decisiones y pruebas</h4><p>Qué se intentó, qué falló y por qué se cambió.</p></a></div>
-</div></section>
-
-<section class="section tight"><div class="wrap"><div class="note reveal"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span><strong>Preservación:</strong> las versiones se copiaron sin <code>.git</code>, <code>node_modules</code>, entornos virtuales, compilados ni bases de datos. Los tokens y claves detectados fueron redactados; las plantillas <code>.example</code> se conservan. Las limitaciones conocidas están en la documentación, no escondidas.</span></div></div></section>
-
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">01 — La idea</div><h2>Los asistentes viven en la nube. Este no.</h2><p class="section-sub">Latencia, dependencia de conectividad y conversaciones que salen del dispositivo. En un auto, eso no siempre es aceptable. JarvisUNOQ demuestra qué parte de un asistente se puede tener dentro de la placa.</p></div><div class="rich reveal"><div class="card-grid">
+<div class="card"><h3>La nube no siempre está</h3><div><div></div><p>Un asistente conectado falla sin señal, suma latencia y envía cada consulta a un tercero. Para un vehículo o un entorno industrial, la privacidad y la disponibilidad no son opcionales.</p></div></div>
+<div class="card"><h3>Un LLM dentro de la placa</h3><div><div></div><p>Ollama + Qwen2.5 cuantizado, midiendo cada milisegundo. La fase de texto funciona y está medida; la voz y el CAN quedan documentados como roadmap, sin promesas vacías.</p></div></div>
+</div></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">02 — El recorrido</div><h2>Cómo funciona, paso a paso</h2><p class="section-sub">Una consulta completa, desde la terminal SSH hasta la respuesta del modelo.</p></div><div class="rich reveal"><div class="timeline">
+<div class="step"><div class="step-n">01</div><h4>SSH a la placa</h4><div><p>Acceso por clave, sin abrir puertos innecesarios ni exponer la API a la red.</p></div></div>
+<div class="step"><div class="step-n">02</div><h4>Ollama local</h4><div><p>Binario ARM64 sin CUDA, escuchando solo en 127.0.0.1:11434.</p></div></div>
+<div class="step"><div class="step-n">03</div><h4>Qwen2.5</h4><div><p>0.5B para velocidad, 1.5B para calidad. Un modelo cargado a la vez para no ahogar la RAM.</p></div></div>
+<div class="step"><div class="step-n">04</div><h4>Chat</h4><div><p>jarvis-chat.py envía la consulta a /api/chat y muestra la respuesta con estadísticas.</p></div></div>
+<div class="step"><div class="step-n">05</div><h4>Medición</h4><div><p>Cada respuesta registra latencia, tokens y velocidad. Las cifras del README salen de la placa, no de una hoja de cálculo.</p></div></div>
+</div></div></div></section>
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">03 — Bajo el capó</div><h2>Poca RAM, decisiones grandes</h2><p class="section-sub">El cuello de botella es el prompt eval y la memoria. Cada componente se eligió por lo que cuesta, no por lo que promete.</p></div><div class="rich reveal"><figure><img src="assets/rich/architecture.svg" alt="Arquitectura de JarvisUNOQ: SSH, Ollama y Qwen2.5 en la UNO Q" loading="lazy"><figcaption>docs/assets/architecture.svg · del operador al modelo</figcaption></figure>
+<div class="card-grid">
+<div class="card"><h3>Sin GPU</h3><div><p>Ollama ARM64 corre en CPU; el binario se instala sin las variantes CUDA para ahorrar espacio.</p></div></div>
+<div class="card"><h3>Loopback only</h3><div><p>La API de Ollama no sale de la placa. El chat entra por SSH, no por un puerto público.</p></div></div>
+<div class="card"><h3>Un modelo a la vez</h3><div><p>OLLAMA_MAX_LOADED_MODELS=1 evita que 0.5B y 1.5B se peleen por la RAM.</p></div></div>
+</div></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">04 — Lo que lo hace distinto</div><h2>Decisiones de ingeniería</h2><p class="section-sub">Un experimento medido, no un benchmark de folleto.</p></div><div class="rich reveal"><div class="features">
+<div class="feature"><h3>100 % local</h3><div><p>Sin nube, sin telemetría y sin dependencia de conectividad durante el chat.</p></div></div>
+<div class="feature"><h3>Cifras reproducibles</h3><div><p>Latencia, tokens y RAM medidos en la placa; los comandos para repetirlos están incluidos.</p></div></div>
+<div class="feature"><h3>Dos modelos</h3><div><p>0.5B para respuestas rápidas y 1.5B para calidad, con el compromiso RAM/latencia documentado.</p></div></div>
+<div class="feature"><h3>Scripts de operación</h3><div><p>start, stop, status y chat con estadísticas; systemd para Ollama.</p></div></div>
+<div class="feature"><h3>Bitácora honesta</h3><div><p>Incluye el intento con OpenClaw que se descartó y por qué consumía 1,2 GB en reposo.</p></div></div>
+<div class="feature"><h3>Límites a la vista</h3><div><p>Sin GPU, modelos pequeños y alucinaciones posibles. El roadmap de voz y CAN no se vende como terminado.</p></div></div>
+</div></div></div></section>
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">05 — Stack y arranque</div><h2>Con qué está construido</h2><p class="section-sub">Un stack mínimo para exprimir una placa que no fue diseñada para inferencia.</p></div><div class="rich reveal"><p><p>Python estándar y Bash para el cliente; Ollama y un modelo GGUF cuantizado para la inferencia. Nada de frameworks pesados ni servicios externos.</p></p>
+<p>Debian 13 aarch64 Ollama v0.40.14 Qwen2.5 0.5B Qwen2.5 1.5B GGUF Q4_K_M Python stdlib Bash systemd SSH</p>
+<div class="note"><div><span>La UNO Q no es una placa de inferencia: es un gateway excelente. Este proyecto mide hasta dónde se puede llegar sin GPU y lo documenta sin maquillaje.</span></div></div>
+<p>chatear con la placa</p>
+<pre><span>$</span> ssh -p 22 -i ~/.ssh/unoq_key arduino@&lt;IP&gt;
+<span>$</span> ~/start-jarvis.sh
+<span>$</span> ~/jarvis-chat --stats "Responde exactamente: hola"
+<span># latencia, tokens y velocidad en la misma terminal</span></pre></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">06 — Documentación</div><h2>Todo está escrito</h2><p class="section-sub">Cada decisión, cada límite y cada comando están documentados en el repositorio. Sin folletos: lo que funciona se muestra, lo que no, también.</p></div><div class="rich reveal"><div class="card-grid">
+<a class="card" href=""><h3>Datasheet</h3><p>Especificaciones, instalación, operación, dependencias reales y glosario.</p></a>
+<a class="card" href=""><h3>Guía de desarrollador</h3><p>Arquitectura, API de los scripts, unidades systemd, extensión y pruebas.</p></a>
+<a class="card" href=""><h3>Referencias</h3><p>Ollama, Qwen2.5, llama.cpp, GGUF, Arduino UNO Q y Debian.</p></a>
+</div></div></div></section>
 <section class="cta"><div class="wrap"><div class="cta-box reveal">
   <div class="kicker">Siguiente paso</div><h2>¿Te animás?</h2>
   <p>Usá esta familia como base para jarvis uno q. Está documentada para que puedas entenderla, ejecutarla y continuarla sin adivinar.</p>
