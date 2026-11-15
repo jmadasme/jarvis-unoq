@@ -12,8 +12,6 @@ Cada carpeta conserva el contenido original de su etapa, sin `.git`, dependencia
 instaladas ni binarios pesados. La documentación de operación y de código está en
 [`docs/`](docs/), y el sitio del proyecto en [`docs/index.html`](docs/index.html).
 
-> **Nota de preservación:** se removieron credenciales, claves o tokens detectados en 1 archivo(s) de esta familia. Los ejemplos y plantillas seguras se conservan.
-
 ## Índice de versiones
 
 | Versión | Qué aporta | Archivos |
@@ -35,6 +33,60 @@ python3 main.py
 
 Los modelos no se incluyen por tamaño. La latencia depende del modelo elegido y del almacenamiento de la placa.
 
+<!-- ficha -->
+## Ficha de evaluación
+
+**Madurez global: 3.3/5**
+
+| Criterio | Nota | Evidencia |
+|---|---:|---|
+| Madurez | 2/5 | Asistente de texto con scripts y systemd; la fase de voz está diseñada y no implementada. |
+| Reproducibilidad | 3/5 | Ollama y los modelos qwen2.5 se instalan aparte; las latencias dependen del modelo y del contexto. |
+| Documentación | 4/5 | README, arquitectura, instalación y rendimiento documentan fases, benchmarks y la retirada de OpenClaw. |
+| Honestidad de límites | 5/5 | Declara que no hay micrófono, STT ni TTS y que la UNO Q no es una placa de inferencia LLM. |
+| Valor demostrativo | 3/5 | Mide latencias en frío y caliente y compara 0,5B con 1,5B; el alcance real es un chat local. |
+| Facilidad de despliegue | 3/5 | Arranque con scripts y systemd; requiere descargar modelos y disponer de espacio en la placa. |
+
+Chat local medido con honestidad sobre hardware que no está pensado para LLM. La voz queda como diseño; sirve para entender límites, no como asistente completo.
+
+## Lo que no funcionó
+
+### JarvisUNOQ — OpenClaw no cabía en el contexto
+
+La configuración inicial de OpenClaw usaba num_ctx de 4096 y el prompt real medía 12.463 tokens, por lo que Ollama respondía 400. Se subió el contexto a 12.288, pero el prompt de agente rondaba 4360 tokens y a unos 5 tok/s no terminaba antes del timeout de 240 s. Se eliminó OpenClaw el 2026-11-04.
+
+### JarvisUNOQ — El modelo de 1,5B no era conversacional
+
+Respondía correctamente, pero generaba a 3,2 tok/s y procesaba el prompt a 5,2 tok/s, unas tres veces más lento que el 0,5B. Con esa latencia no se sostiene un ida y vuelta. El 0,5B quedó como referencia y el 1,5B como alternativa para respuestas cortas.
+
+### JarvisUNOQ — La fase de voz nunca se implementó
+
+Limitación declarada: el README describe la fase 2 como diseñada, no implementada, y afirma que no hay micrófono, STT ni TTS. El audio de la placa no está disponible y eso bloquea el pipeline. La entrega actual es solo texto; no debe presentarse como asistente de voz.
+
+## Preguntas típicas
+
+**¿Es tiempo real?**
+
+No. Es conversacional con latencia; PERFORMANCE.md la documenta.
+
+**¿Qué modelo usa?**
+
+Uno liviano que quepa en la UNO Q; el nombre y la ruta están en la configuración.
+
+**¿Necesita Internet?**
+
+No para funcionar. Solo para instalar dependencias.
+
+**¿Puedo usar otra placa?**
+
+Sí, si tiene Linux y suficiente CPU/RAM.
+
+**¿Es privado?**
+
+El audio y el texto no salen del equipo en el flujo normal.
+
+<!-- /ficha -->
+
 ## Documentación
 
 - [`docs/datasheet.md`](docs/datasheet.md) — instalación, operación y límites.
@@ -42,11 +94,11 @@ Los modelos no se incluyen por tamaño. La latencia depende del modelo elegido y
 - [`docs/REFERENCES.md`](docs/REFERENCES.md) — estándares, librerías y fuentes.
 - [`docs/index.html`](docs/index.html) — página del proyecto (GitHub Pages).
 
-## Alcance y honestidad
+## El proyecto en detalle
 
 <div align="center">
 
-## JarvisUNOQ
+### JarvisUNOQ
 
 #### Un asistente conversacional que vive en una Arduino UNO Q
 
